@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leo-Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="col-3">
+            
+            <input type="text" class="form-control" id="Caja">
+            <hr>
+
+            <div class="mt-1">
+                <button class="btn btn-danger"  onclick="Salbot()"> sal </button>
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-success" onclick="cosbot()"> cos </button>
+                <button class="btn btn-primary" onclick="acBot(1)"> 1 </button>
+                <button class="btn btn-primary" onclick="acBot(2)"> 2 </button>
+                <button class="btn btn-primary" onclick="acBot(3)"> 3 </button>
+                <button class="btn btn-secondary" onclick="sumBot()"> + </button>
+               
+            </div>
+            
+            <div class="mt-1">
+                <button class="btn btn-success" onclick="tanbot()"> tan </button>
+                <button class="btn btn-primary" onclick="acBot(4)"> 4 </button>
+                <button class="btn btn-primary" onclick="acBot(5)"> 5 </button>
+                <button class="btn btn-dark" onclick="acBot(6)"> 6 </button>
+                <button class="btn btn-secondary" onclick="restbot()"> - </button>
+
+            </div>
+           
+            <div class="mt-1">
+                <button class="btn btn-success" onclick="raizqbot()"> √  </button>
+                <button class="btn btn-dark" onclick="acBot(7)"> 7 </button>
+                <button class="btn btn-dark" onclick="acBot(8)"> 8 </button>
+                <button class="btn btn-dark" onclick="acBot(9)"> 9 </button>
+                <button class="btn btn-secondary" onclick="multibot()"> * </button>
+                
+            </div>
+           
+            <div class="mt-1">
+                <button class="btn btn-danger" onclick="acCle()"> C </button>
+                <button class="btn btn-dark" onclick="acBot(0)"> 0 </button>
+                <button class="btn btn-success" onclick="Potbot()"> Pow  </button>
+                <button class="btn btn-secondary" onclick="divbot()"> / </button>
+                <button class="btn btn-success" onclick="acRes()"> = </button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        //$("#Caja").val("Hola BB!");
+
+        var jvalor = "";
+        var acum = "";
+        var opera = 0;
+    
+
+        function acRes(){
+            if(opera == 1){
+                aux = parseInt(acum) + parseInt(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 2){
+                aux = parseInt(acum) - parseInt(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 3){
+                aux = parseInt(acum) * parseInt(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 4){
+                aux = parseInt(acum) / parseInt(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 5){
+                aux = Math.sqrt(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 6){
+                aux = Math.pow(acum, jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 7){
+                aux = Math.cos(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+            else if(opera == 8){
+                aux = Math.tan(jvalor);
+                $("#Caja").val(aux);
+                jvalor = aux;
+                opera = 0;
+            }
+
+        }
+
+      
+
+        function sumBot(){
+            acum = jvalor;
+            opera = 1;
+            acCle();
+        }
+
+        function restbot(){
+            acum = jvalor;
+            opera = 2;
+            acCle();
+        }
+
+        function multibot(){
+            acum = jvalor;
+            opera = 3;
+            acCle();
+        }
+
+        function divbot(){
+            acum = jvalor;
+            opera = 4;
+            acCle();
+        }
+
+        function raizqbot(){
+            acum = jvalor;
+            opera = 5;
+            $("#Caja").val("√")
+        }
+
+        function Salbot(){
+            jvalor = "Hola Leonardo Villegas C.";
+            $("#Caja").val(jvalor);
+        }
+
+        function Potbot(){
+            acum = jvalor;
+            opera = 6;
+            acCle()
+        }
+
+        function cosbot(){
+            acum = jvalor;
+            opera = 7;
+            $("#Caja").val("cos()")
+        }
+
+        function tanbot(){
+            acum = jvalor;
+            opera = 8;
+            $("#Caja").val("tan()")
+        }
+
+        function acBot( valor ){
+            jvalor = jvalor + valor;
+            $("#Caja").val(jvalor);
+
+        }
+
+        function acCle(){
+            $("#Caja").val("");
+            jvalor = "";
+        }
+    </script>
+</body>
+</html>
